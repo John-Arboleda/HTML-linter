@@ -32,7 +32,7 @@ class ParsedDoc
 
   def run_tests(parsed_array)
     test_results = []
-    test_results.push(doctype?(parsed_array))
+    test_results += basic_analysis(parsed_array) + tags_analysis(parsed_array)
     test_results
   end
 
