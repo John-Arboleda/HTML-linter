@@ -28,6 +28,16 @@ module DocAnalysis
           tags_analysis_array.push("Error: line #{index + 1} col #{col}: invalid tag #{tag}")
         end
       end
+      item.reset
+      while item.check_until(/\s(?=\w+\s*=\s*"*)/)
+        item.skip_until(/\s(?=\w+\s*=\s*"*)/)
+        col = item.pos
+        attrb = item.scan(/\w+/)
+        next if attrb.nil?
+        if attrb != attrb.downcase
+          tags_analysis_array.push("Warning: line #{index + 1} col #{col}: attribute #{attrb} is not lowercase")
+        end
+      end
     end
     tags_analysis_array
   end
