@@ -11,36 +11,6 @@ module DocAnalysis
     basic_analysis_array.push("DOCTYPE tag not found") if !doctype_exist
     basic_analysis_array
   end
-
-  def tags_analysis(parsed_doc)
-    complete_tags = HtmlItems.new().complete_tags
-    tags_analysis_array = []
-    parsed_array.each_with_index do |item, index| 
-      while item.check_until(/<(?!\/)/)
-        item.skip_until(/<(?!\/)/)
-        col = item.pos
-        tag = item.scan(/\w+/)
-        next if tag.nil?
-        if tag != tag.downcase
-          tags_analysis_array.push("Warning: line #{index + 1} col #{col}: tag #{tag} is not lowercase")
-        end
-        if complete_tags.none?(tag.downcase)
-          tags_analysis_array.push("Error: line #{index + 1} col #{col}: invalid tag #{tag}")
-        end
-      end
-      item.reset
-      while item.check_until(/\s(?=\w+\s*=\s*"*)/)
-        item.skip_until(/\s(?=\w+\s*=\s*"*)/)
-        col = item.pos
-        attrb = item.scan(/\w+/)
-        next if attrb.nil?
-        if attrb != attrb.downcase
-          tags_analysis_array.push("Warning: line #{index + 1} col #{col}: attribute #{attrb} is not lowercase")
-        end
-      end
-    end
-    tags_analysis_array
-  end
 end
 
   

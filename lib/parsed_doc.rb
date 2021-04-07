@@ -1,6 +1,7 @@
 require 'strscan'
 require 'colorize'
 require_relative 'doc_analysis.rb'
+require_relative 'tags_analysis.rb'
 
 class ParsedDoc
   attr_accessor :num_errors, :result
@@ -29,10 +30,12 @@ class ParsedDoc
   end
 
   include DocAnalysis
+  include TagsAnalysis
 
   def run_tests(parsed_array)
     test_results = []
-    test_results += basic_analysis(parsed_array) + tags_analysis(parsed_array)
+    test_results += basic_analysis(parsed_array)
+    test_results += tags_analysis(parsed_array)
     test_results
   end
 
