@@ -1,0 +1,8 @@
+require_relative '../lib/parsed_doc.rb'
+require_relative '../lib/html_items.rb'
+require 'strscan'
+require 'colorize'
+
+analysis = ParsedDoc.new("example.html")
+
+puts analysis.result

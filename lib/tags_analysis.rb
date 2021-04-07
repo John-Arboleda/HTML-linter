@@ -25,10 +25,10 @@ module TagsAnalysis
       tag = item.scan(/\w+/)
       next if tag.nil?
       if tag != tag.downcase
-        result_array.push("Warning: line #{index + 1} col #{col}: tag #{tag} is not lowercase")
+        result_array.push("Warning: ".colorize(:yellow) + "line #{index + 1} col #{col}: tag #{tag} is not lowercase")
       end
       if complete_tags.none?(tag.downcase)
-        result_array.push("Error: line #{index + 1} col #{col}: invalid tag #{tag}")
+        result_array.push("Error: ".colorize(:red) + "line #{index + 1} col #{col}: invalid tag #{tag}")
       end
     end
     result_array
@@ -42,7 +42,17 @@ module TagsAnalysis
       attrb = item.scan(/\w+/)
       next if attrb.nil?
       if attrb != attrb.downcase
-        result_array.push("Warning: line #{index + 1} col #{col}: attribute #{attrb} is not lowercase")
+        result_array.push("Warning: ".colorize(:yellow) + "line #{index + 1} col #{col}: attribute #{attrb} is not lowercase")
+      end
+      if item.check(/\s+(?==\s*"*)/)
+        col = item.pos
+        item.skip(/\s+(?==\s*"*)/)
+        result_array.push("Suggestion: ".colorize(:blue) + "line #{index + 1} col #{col}: avoid whitespace after attribute")
+      end
+      if item.check(/\s*=(?=\s+"*)/)
+        col = item.pos
+        item.skip(/\s*=(?=\s+"*)/)
+        result_array.push("Suggestion: ".colorize(:blue) + " line #{index + 1} col #{col}: avoid whitespace after attribute")
       end
     end
     result_array

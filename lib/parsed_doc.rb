@@ -38,5 +38,4 @@ class ParsedDoc
     test_results += tags_analysis(parsed_array)
     test_results
   end
-
 end
