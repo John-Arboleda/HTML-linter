@@ -3,7 +3,7 @@ require_relative '../lib/html_items.rb'
 require 'strscan'
 require 'colorize'
 
-file_path = ARGV.shift
+file_path = "testing/positive_example.html" # ARGV.shift
 
 analysis = ParsedDoc.new(file_path)
 
