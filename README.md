@@ -82,7 +82,7 @@ If there are no errors `analysis complete: 0 issues found` message will appear
 ### Testing
 
 - Select `/html-Linter/testing` as the working directory.
-- Run the command `bundle exec rspec`
+- Run the command `bundle exec rspec` in the terminal.
 
 ## Authors
 
