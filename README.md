@@ -66,17 +66,17 @@ As its name suggest, the HTML-linter enforces some basic HTML5 rules and good pr
 ### Setup
 
 - Download or clone this repository on your computer
-- Select active folder: /html-Linter/bin in your console
+- Select active folder: `/html-Linter/bin` in your console
 
 ### Usage
 
-Type ruby main *path of your HTML file*
+Type `ruby main *path of your HTML file*`
 
 If your file does not comply with linter rules, the result will be something like this:
 
 ![linter_results](./images/linter_results.png)
 
-If there are no errors *analysis complete: 0 issues found* message will appear
+If there are no errors *"analysis complete: 0 issues found"* message will appear
 
 ## Authors
 
