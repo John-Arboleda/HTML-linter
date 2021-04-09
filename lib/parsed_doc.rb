@@ -32,7 +32,11 @@ class ParsedDoc
 
   def run_tests(parsed_array)
     test_results = []
-    test_results += basic_analysis(parsed_array)
+    test_results << doctype_tag?(parsed_array) unless doctype_tag?(parsed_array).nil?
+    test_results << html_tag?(parsed_array) unless html_tag?(parsed_array).nil?
+    test_results << head_tag?(parsed_array) unless head_tag?(parsed_array).nil?
+    test_results << body_tag?(parsed_array) unless body_tag?(parsed_array).nil?
+    test_results << title_tag?(parsed_array) unless title_tag?(parsed_array).nil?
     test_results += tags_analysis(parsed_array)
     num_errors = test_results.length
     test_results.push("\nAnalyisis Completed: #{num_errors} issues found\n\n")
