@@ -79,6 +79,11 @@ If your file does not comply with linter rules, the result will be something lik
 
 If there are no errors `analysis complete: 0 issues found` message will appear
 
+### Testing
+
+- Select `/html-Linter/testing` as the working directory.
+- Run the command `bundle exec rspec`
+
 ## Authors
 
 👤 **John Arboleda**

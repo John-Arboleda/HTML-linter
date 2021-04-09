@@ -42,7 +42,6 @@ module TagsAnalysis
       attrb = item.scan(/\w+/)
       next if attrb.nil?
 
-      p "index #{index} col #{col}"
       downcase_message = 'Warning: '.colorize(:yellow) +
                          "line #{index + 1} col #{col}: attribute #{attrb} is not lowercase"
       result_array << downcase_message if attrb != attrb.downcase
