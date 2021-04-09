@@ -13,8 +13,6 @@ module TagsAnalysis
     tags_analysis_array
   end
 
-  private
-
   def valid_tag?(item, index)
     result_array = []
     complete_tags = HtmlItems.new.complete_tags
@@ -36,7 +34,6 @@ module TagsAnalysis
     result_array
   end
 
-  # rubocop: disable Metrics/MethodLength
   def attribute_errors(item, index)
     result_array = []
     while item.check_until(/\s(?=\w+\s*=\s*"*)/)
@@ -45,24 +42,29 @@ module TagsAnalysis
       attrb = item.scan(/\w+/)
       next if attrb.nil?
 
-      if attrb != attrb.downcase
-        result_array.push('Warning: '
-          .colorize(:yellow) + "line #{index + 1} col #{col}: attribute #{attrb} is not lowercase")
-      end
-      if item.check(/\s+(?==\s*"*)/)
-        col = item.pos
-        item.skip(/\s+(?==\s*"*)/)
-        result_array.push('Suggestion: '
-          .colorize(:blue) + "line #{index + 1} col #{col}: avoid whitespace after attribute")
-      end
-      next unless item.check(/\s*=(?=\s+"*)/)
-
-      col = item.pos
-      item.skip(/\s*=(?=\s+"*)/)
-      result_array.push('Suggestion: '
-        .colorize(:blue) + " line #{index + 1} col #{col}: avoid whitespace after attribute")
+      p "index #{index} col #{col}"
+      downcase_message = 'Warning: '.colorize(:yellow) +
+                         "line #{index + 1} col #{col}: attribute #{attrb} is not lowercase"
+      result_array << downcase_message if attrb != attrb.downcase
+      result_array += attrb_whitespace?(item, index)
     end
     result_array
   end
-  # rubocop: enable Metrics/MethodLength
+
+  def attrb_whitespace?(item, index)
+    spaces_errors = []
+    if item.check(/\s+(?==\s*"*)/)
+      col = item.pos
+      item.skip(/\s+(?==\s*"*)/)
+      spaces_errors.push('Suggestion: '.colorize(:blue) +
+        "line #{index + 1} col #{col}: avoid whitespace after attribute")
+    end
+    if item.check(/\s*=(?=\s+"*)/)
+      col = item.pos
+      item.skip(/\s*=(?=\s+"*)/)
+      spaces_errors.push('Suggestion: '.colorize(:blue) +
+        " line #{index + 1} col #{col}: avoid whitespace after attribute")
+    end
+    spaces_errors
+  end
 end
