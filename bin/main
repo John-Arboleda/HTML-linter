@@ -1,0 +1,10 @@
+require_relative '../lib/parsed_doc'
+require_relative '../lib/html_items'
+require 'strscan'
+require 'colorize'
+
+file_path = ARGV.shift
+
+analysis = ParsedDoc.new(file_path)
+
+puts analysis.result
