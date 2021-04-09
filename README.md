@@ -2,11 +2,11 @@
 
 # HTML Linter - Ruby Capstone Project
 
-> This is the [Capstone Project for the Ruby module](https://www.notion.so/Build-your-own-linter-b17a3c22f7b940c98ca1980250720769) of the Microverse program. The main goal of this project is to put into practice the concepts of **Methods**, **Classes**, **Modules** and **Testing.** in Ruby. 
+> This is the [Capstone Project for the Ruby module](https://www.notion.so/Build-your-own-linter-b17a3c22f7b940c98ca1980250720769) of the Microverse program. The main goal of this project is to put into practice the concepts of **Methods**, **Classes**, **Modules**, and **Testing.** in Ruby. 
 
 ## About the Project
 
-As its name suggest, the HTML-linter enforces some basic HTML5 rules and good pratices recommended by w3school article [HTML Style Guide and Coding Conventions](https://www.w3schools.com/html/html5_syntax.asp).
+As its name suggests, the HTML-linter enforces some basic HTML5 rules and good practices recommended by w3school article [HTML Style Guide and Coding Conventions](https://www.w3schools.com/html/html5_syntax.asp).
 
 ### Rules sample
 
@@ -22,7 +22,7 @@ As its name suggest, the HTML-linter enforces some basic HTML5 rules and good pr
 ```
 <!DOCTYPE html><html lang="en">
 ```
-2. All tags and attribute must be in lowercase, except !DOCTYPE
+2. All tags and attributes must be in lowercase, except !DOCTYPE
 
 **Good**
 ```
@@ -44,7 +44,7 @@ As its name suggest, the HTML-linter enforces some basic HTML5 rules and good pr
 ```
 <sections>
 ```
-4. No whitspace between an attribute and its value if any
+4. No whitespace between an attribute and its value if any
 
 **Good**
 ```
@@ -65,18 +65,19 @@ As its name suggest, the HTML-linter enforces some basic HTML5 rules and good pr
 
 ### Setup
 
-- Download or clone this repository on your computer
-- Select active folder: `/html-Linter/bin` in your console
+- Clone this repository on your computer. Check [this tutorial](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository) about cloning a GitHub repository
+- Change the current working directory to the location where the respository was cloned. 
+- Select `/html-Linter/bin` as the working directory.
 
 ### Usage
 
-Type `ruby main *path of your HTML file*`
+Run the HTML-linter typing `ruby main *path of your HTML file*` in the terminal, press **Enter**. `/html-Linter/bin` must be the working directory
 
 If your file does not comply with linter rules, the result will be something like this:
 
 ![linter_results](./images/linter_results.png)
 
-If there are no errors *"analysis complete: 0 issues found"* message will appear
+If there are no errors `analysis complete: 0 issues found` message will appear
 
 ## Authors
 
